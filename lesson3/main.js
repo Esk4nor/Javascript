@@ -75,12 +75,15 @@ let users = [
     {name: 'max', age: 31, status: true}
 ];
 for (const user of users) {
-    if (user.age>30 && user.status)
+    if (user.status)
         console.log(user)
 
 }
 for (const user of users) {
-    if (user.age>30 && !user.status)
+    if (!user.status)
         console.log(user)
 
 }
+for (const user of users) {
+    if (user.age>30)
+        console.log(user)}
