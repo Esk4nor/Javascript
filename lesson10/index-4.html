@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="prev" disabled="disabled">Prev</button>
+<button id="next">Next</button>
+<div id="wrapper"></div>
+<script>
+    // //     зробити масив на 100 об'єктів та дві кнопки prev next
+    // // при завантажені сторінки з'являються перші 10 об'єктів.
+    // //     При натисканні next виводяться настпні 10 об'єктів
+    // // При натисканні prev виводяться попередні 10 об'єктів
+    // //
+    let arr = []
+    for (let i = 1; i <= 100; i++) {
+    arr.push(`${i}`)
+    }
+ console.log(arr)
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+    let page = 1;
+ const handler = (page, index) =>{
+    const wrapper = document.getElementById('wrapper');
+    const starIndex = (page - 1) * index;
+    let lastIndex = page * index;
+
+    if(lastIndex > arr.length || lastIndex===arr.length){
+        lastIndex = arr.length;
+        next.setAttribute('disabled', 'disabled');
+    } else {
+        next.removeAttribute('disabled');
+    }
+    if (starIndex>0){
+        prev.removeAttribute('disabled');
+    } else{
+        prev.setAttribute('disabled', 'disabled');
+    }
+    const children = [];
+     for (let i = starIndex; i < lastIndex; i++) {
+         const item = arr[i];
+         const child = document.createElement('div')
+         const title = document.createElement('div')
+         child.classList.add('wrapper', 'item');
+         title.innerText = `${item}`;
+         children.push(title);
+     }
+     wrapper.replaceChildren(...children);
+ };
+handler(page, 10);
+prev.addEventListener('click', ()=> handler(page -= 1, 10));
+next.addEventListener('click', ()=> handler(page += 1, 10));
+
+</script>
+</body>
+</html>

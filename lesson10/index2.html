@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form  name="form1">
+    <input type="number" name="row">
+    <input type="number" name="column">
+    <input type="text" name="textValue">
+    <button>Creat</button>
+</form>
+<script>
+    // // *** Створити 3 інпута та кнопку. Один визначає кількість рядків, другий - кількість ячеєк, третій вмиіст ячеєк.
+    // //     При натисканні кнопки, вся ця інформація зчитується і формується табличка, з відповідним вмістом.
+    // // (Додатковачастина для завдання)
+
+    let form1 = document.forms.form1;
+    let txt = document.getElementsByName('textValue')
+form1.addEventListener('click', function (e){
+    e.preventDefault()
+    const table = document.createElement('table');
+    for (let i = 0; i < this.row.value; i++) {
+        const tr = document.createElement('tr')
+        table.appendChild(tr);
+        for (let i = 0; i < this.column.value; i++) {
+            const td = document.createElement('td')
+            td.innerText = this.textValue.value
+            tr.appendChild(td);
+        }
+    }
+document.body.appendChild(table)
+})
+</script>
+</body>
+</html>

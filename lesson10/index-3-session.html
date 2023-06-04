@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  const json = localStorage.getItem('sessions');
+  const sessions = json ? JSON.parse(json): [];
+
+  for (const session of sessions) {
+ const wrapp = document.createElement('div');
+ const date = document.createElement('div');
+ date.innerText = `${session.date}`;
+ wrapp.appendChild(date);
+ document.body.appendChild(wrapp);
+  }
+
+</script>
+
+</body>
+</html>

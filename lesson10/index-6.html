@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  // //     - створити інпут який приймає вік людини та кнопку яка підтверджує дію.При натисканні на кнопку зчитати інформацію з інпуту та перевірити вік чи меньше він ніж 18, та повідомити про це користувача
+  const form1 = document.createElement('form');
+  const input = document.createElement('input');
+  const button = document.createElement('button');
+  const div = document.createElement('div')
+  button.innerText = 'Check'
+  form1.append(input, button);
+  input.name = 'age';
+  input.type= 'number';
+  document.body.append(form1, div);
+  form1.addEventListener('submit', function (){
+      let age = this.age.value;
+      if (age>18){
+          alert('Вам більше 18');
+      }else if (age==18){
+          alert('Вам 18')
+      } else {
+          alert(('Вам менше 18'))
+      }
+  })
+</script>
+</body>
+</html>
