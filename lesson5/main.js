@@ -101,4 +101,4 @@ let exchange=(sumUAH,currencyValues,exchangeCurrency)=>{
     }
 
 }
-console.log(exchange(10000,[{currency:'USD',value:40},{currency:'EUR',value:42}],'USD'))
+console.log(exchange(5000,[{currency:'USD',value:40},{currency:'EUR',value:42}],'USD'))

@@ -3,7 +3,7 @@
 // // 8 Нижчє інформаці про пост, вивести всі коментарі поточного поста (ендпоінт  - https://jsonplaceholder.typicode.com/posts/POST_ID/comments)
 const infoId = new URL(location.href).searchParams.get('infoId');
 const div = document.createElement('div');
-div.classList.add('center')
+div.classList.add('center');
 const wrapComment = document.createElement('div');
 fetch(`https://jsonplaceholder.typicode.com/posts/${infoId}`)
     .then((resolve) => resolve.json())
@@ -18,19 +18,21 @@ fetch(`https://jsonplaceholder.typicode.com/posts/${infoId}`)
         }
 
     });
-
+const titleComment = document.createElement('h1');
+titleComment.innerText = `Comment:`;
+titleComment.classList.add('commentCenter')
 fetch(`https://jsonplaceholder.typicode.com/posts/${infoId}/comments`)
     .then((resolve) => resolve.json())
     .then((comment) =>{
 
         for (const commentElement of comment) {
             const div = document.createElement('div');
-            div.innerText = `Comment - ${commentElement.body}`
-            div.classList.add('row')
-            wrapComment.appendChild(div)
+            div.innerText = `Comment - ${commentElement.body}`;
+            div.classList.add('row');
+            wrapComment.appendChild(div);
 
         }
 
     });
-wrapComment.classList.add('comment')
-document.body.append(div,wrapComment)
+wrapComment.classList.add('comment');
+document.body.append(div,titleComment, wrapComment);

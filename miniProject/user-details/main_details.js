@@ -21,30 +21,30 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
             }
         }
 
-
         const liWrapAddress = document.createElement('li');
-        liWrapAddress.innerText = `address:`
+        liWrapAddress.innerText = `address:`;
         const ulAddress = document.createElement('ul');
         liWrapAddress.appendChild(ulAddress);
-
         const ulGeo = document.createElement('ul');
         const liWrapGeo = document.createElement('li');
         liWrapGeo.innerText = `geo:`;
         liWrapGeo.appendChild(ulGeo);
+
         for (const addres in user.address) {
             if (addres!=='geo'){
                 const liAddress = document.createElement('li');
                 liAddress.innerText = `${addres} - ${user.address[addres]}`;
                 ulAddress.appendChild(liAddress);
-                liAddress.appendChild(liWrapGeo)
-                }}
+                liAddress.appendChild(liWrapGeo);
+            }
+        }
 
 
         for (const geoKey in user.address.geo) {
-            const ligeo = document.createElement('li');
-            ligeo.innerText = `${geoKey} - ${user.address.geo[geoKey]}`;
-            ulGeo.appendChild(ligeo)
-                }
+            const liGeo = document.createElement('li');
+            liGeo.innerText = `${geoKey} - ${user.address.geo[geoKey]}`;
+            ulGeo.appendChild(liGeo);
+        }
         const ulCompany = document.createElement('ul');
         const liWrapCompany = document.createElement('li');
         liWrapCompany.innerText = `company:`;
@@ -59,17 +59,15 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
 
         liWrap.append(liWrapAddress, liWrapCompany);
         ul.append(liWrap);
-        wrapperUs.appendChild(ul)
+        wrapperUs.appendChild(ul);
 
     })
 const button = document.createElement('button');
 button.innerText = 'post of current user';
 button.classList.add('mainButton');
-
-const xxx = document.createElement('div');
-
-xxx.append(wrapperUs,button)
-document.body.appendChild(xxx)
+const bigWrap = document.createElement('div');
+bigWrap.append(wrapperUs,button);
+document.body.appendChild(bigWrap);
 const divWrap = document.createElement('div');
 
 
@@ -85,7 +83,6 @@ fetch(`https:jsonplaceholder.typicode.com/users/${userId}/posts`)
 
 
         button.addEventListener('click', function (e){
-
             const firstTitle = document.createElement('div');
             firstTitle.innerText = `Title - ${postElement.title}`;
             firstTitle.classList.add(`title${i+1}`,'usDetailsTitle');
@@ -97,12 +94,12 @@ fetch(`https:jsonplaceholder.typicode.com/users/${userId}/posts`)
             buttonPost.addEventListener('click', function (e) {
                 location.href = `../post-details/post-details.html?infoId=${postElement.id}`;
             });
-            button.setAttribute('disabled', 'disabled')
+            button.setAttribute('disabled', 'disabled');
         })
 
         }
         divWrap.classList.add('titleFlex');
     })
 const wrap = document.getElementById('wrap');
-wrap.append(xxx,divWrap)
+wrap.append(bigWrap,divWrap);
 

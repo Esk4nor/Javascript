@@ -124,3 +124,6 @@ main{
     border: solid 1px olivedrab;
     border-radius: 5px;
 }
+.commentCenter{
+    text-align: center;
+}
